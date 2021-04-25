@@ -19,6 +19,7 @@ import {MatListModule} from "@angular/material/list";
 import {IceCreamFormComponent} from "./components/ice-cream-form.component";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {IceCreamDetailsComponent} from "./components/ice-cream-details.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {IceCreamDetailsComponent} from "./components/ice-cream-details.component
     IceCreamDetailsComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

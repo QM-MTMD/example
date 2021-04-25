@@ -2,8 +2,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {FormBuilder} from "@angular/forms";
-import {IceCream, IceCreamCategory} from "../models/ice-cream.model";
-import {IceCreamService} from "../ice-cream.service";
+import {IceCreamServiceWrapper} from "../ice-cream-service-wrapper.service";
+import {IceCream} from "../generated";
+import CategoryEnum = IceCream.CategoryEnum;
 
 export interface Ingredient {
   name: string;
@@ -24,15 +25,15 @@ export interface Fruit {
 })
 export class IceCreamFormComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  readonly iceCreamCategory = IceCreamCategory;
+  readonly iceCreamCategory = CategoryEnum;
   @Output() buttonClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
   iceCreamForm = this.formBuilder.group({
     name: [''],
-    foodIntollerances : [''],
-    nutritionalValue : [''],
-    priceEK : [''],
-    priceVK : [''],
+    foodIntollerances: [''],
+    nutritionalValue: [''],
+    priceEK: [''],
+    priceVK: [''],
     percentageCream: [''],
     percentageFruit: [''],
   });
@@ -46,7 +47,8 @@ export class IceCreamFormComponent implements OnInit {
   displayAdditionalWater = false;
 
 
-  constructor(private formBuilder:FormBuilder, private iceCreamService: IceCreamService) { }
+  constructor(private formBuilder: FormBuilder, private iceCreamService: IceCreamServiceWrapper) {
+  }
 
   ngOnInit(): void {
   }
@@ -78,9 +80,7 @@ export class IceCreamFormComponent implements OnInit {
       return;
     }
 
-    let iceCream = this.toIceCream();
-    console.log(iceCream);
-    this.iceCreamService.addToList(iceCream);
+    this.iceCreamService.storeToIceCreamList(this.mapToIceCream());
     this.resetData();
   }
 
@@ -92,36 +92,40 @@ export class IceCreamFormComponent implements OnInit {
     this.category = '';
   }
 
-  private toIceCream() {
-    let cat: IceCreamCategory;
+  private mapToIceCream() {
+    let cat: CategoryEnum;
     switch (this.category) {
-      case "CREAM":
-        cat = IceCreamCategory.CREAM;
+      case "Cream":
+        cat = CategoryEnum.Cream;
         break;
-      case "FRUIT":
-        cat = IceCreamCategory.FRUIT;
+      case "Fruit":
+        cat = CategoryEnum.Fruit;
         break;
       default:
-        cat = IceCreamCategory.WATER;
+        cat = CategoryEnum.Water;
     }
 
-    let iceCream = new IceCream(this.iceCreamForm.controls["name"].value, cat);
-    iceCream.foodIntollerances = this.iceCreamForm.controls["foodIntollerances"].value;
-    iceCream.nutritionalValue = this.iceCreamForm.controls["nutritionalValue"].value;
-    iceCream.priceEK = this.iceCreamForm.controls["priceEK"].value;
-    iceCream.priceVK = this.iceCreamForm.controls["priceVK"].value;
-    iceCream.percentageCream = this.iceCreamForm.controls["percentageCream"].value;
-    iceCream.percentageFruit = this.iceCreamForm.controls["percentageFruit"].value;
-    iceCream.ingredients = this.ingredients.map(v => v.name);
-    iceCream.flavors = this.flavors.map(v => v.name);
-    iceCream.fruits = this.fruits.map(v => v.name);
+    let iceCream = {
+      name: this.iceCreamForm.controls["name"].value,
+      category: cat,
+      foodIntollerances: this.iceCreamForm.controls["foodIntollerances"].value,
+      nutritionalValue: this.iceCreamForm.controls["nutritionalValue"].value,
+      priceEK: this.iceCreamForm.controls["priceEK"].value,
+      priceVK: this.iceCreamForm.controls["priceVK"].value,
+      percentageCream: this.iceCreamForm.controls["percentageCream"].value,
+      percentageFruit: this.iceCreamForm.controls["percentageFruit"].value,
+      ingredients: this.ingredients.map(v => v.name),
+      flavors: this.flavors.map(v => v.name),
+      fruits: this.fruits.map(v => v.name),
+    }
+    console.log(iceCream);
     return iceCream;
   }
 
   displayFields(selectedCategory: string) {
-    this.displayAdditionalCream = selectedCategory==="CREAM";
-    this.displayAdditionalFruit = selectedCategory==="FRUIT";
-    this.displayAdditionalWater = selectedCategory==="WATER";
+    this.displayAdditionalCream = selectedCategory === "Cream";
+    this.displayAdditionalFruit = selectedCategory === "Fruit";
+    this.displayAdditionalWater = selectedCategory === "Water";
   }
 
   addFlavor(event: MatChipInputEvent): void {

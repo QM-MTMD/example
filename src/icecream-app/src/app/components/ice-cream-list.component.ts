@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IceCream} from "../models/ice-cream.model";
-import {IceCreamService} from "../ice-cream.service";
+import {Component, OnInit} from '@angular/core';
+import {IceCreamServiceWrapper} from "../ice-cream-service-wrapper.service";
+import {IceCream} from "../generated";
 
 @Component({
   selector: 'app-ice-cream-list',
@@ -9,12 +9,14 @@ import {IceCreamService} from "../ice-cream.service";
 })
 export class IceCreamListComponent implements OnInit {
 
-  listIceCream!: IceCream[];
+  listIceCream!: Array<IceCream> | undefined;
 
-  constructor(private iceCreamService: IceCreamService) { }
+  constructor(private iceCreamService: IceCreamServiceWrapper) { }
 
   ngOnInit(): void {
-    this.listIceCream = this.iceCreamService.getIceCreamList();
+    this.iceCreamService.getIceCreamList().subscribe(data => {
+      this.listIceCream = data.icecreamList;
+    });
   }
 
 }
