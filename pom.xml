@@ -67,7 +67,7 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>jaxrs-spec</generatorName>
                             <generateModelTests>false</generateModelTests>
                             <generateApiTests>false</generateApiTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -167,6 +167,16 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.12.3</version>
         </dependency>
     </dependencies>
 
