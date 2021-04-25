@@ -1,0 +1,39 @@
+$schema: http://json-schema.org/draft-04/schema#
+title: IceCream
+type: object
+description: ice cream object
+properties:
+  name:
+    type: string
+    description: ice cream
+  category:
+    type: string
+    enum: ["CREAM", "FRUIT", "WATER"]
+    description: |
+      SAHNE = Sahne-Eis
+      FRUCHT = Frucht-Eis
+      WASSER = Wasser-Eis
+  ingredients:
+    type: array
+    items:
+      $ref: './ingredient.yaml'
+  foodintollerances:
+    type: string
+  nutritional-value:
+    type: integer
+  price-ek:
+    type: number
+  price-vk:
+    type: number
+  cream-percentage:
+    type: number
+  fruit-percentage:
+    type: number
+  fruits:
+    type: array
+    items:
+      $ref: './fruit.yaml'
+required:
+  - name
+  - category
+  - ingredients

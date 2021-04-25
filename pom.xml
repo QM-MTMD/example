@@ -76,6 +76,7 @@
                                 <dateLibrary>java8</dateLibrary>
                                 <useTagsForClassNames>true</useTagsForClassNames>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
+                                <interfaceOnly>true</interfaceOnly>
                             </configOptions>
                         </configuration>
                     </execution>
