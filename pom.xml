@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>3.3.4</version>
                 <configuration>
                     <applicationURL>${project.basedir}/target/liberty/wlp/usr/iceCream</applicationURL>
                     <serverName>iceCream</serverName>
@@ -211,17 +211,34 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>io.openliberty.tools</groupId>
-                        <artifactId>liberty-maven-plugin</artifactId>
-                        <configuration>
-                            <install>
-                                <type>javaee8</type>
-                                <useOpenLiberty>true</useOpenLiberty>
-                            </install>
-                        </configuration>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>2.2</version>
+                        <executions>
+                            <execution>
+                                <id>unpack-open-liberty</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>unpack-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <includeGroupIds>io.openliberty</includeGroupIds>
+                                    <includeArtifactIds>openliberty-runtime</includeArtifactIds>
+                                    <outputDirectory>${project.basedir}/liberty</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
+            <dependencies>
+                <dependency>
+                    <groupId>io.openliberty</groupId>
+                    <artifactId>openliberty-runtime</artifactId>
+                    <version>[21.0.0.4,)</version>
+                    <type>zip</type>
+                </dependency>
+            </dependencies>
         </profile>
     </profiles>
 
