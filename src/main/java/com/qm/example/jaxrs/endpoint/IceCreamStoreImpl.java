@@ -1,6 +1,5 @@
 package com.qm.example.jaxrs.endpoint;
 
-import com.qm.example.icecream.IceCream;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
 import org.openapitools.model.RestIceCream;
