@@ -10,8 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <java.version>11</java.version>
         <microstream.version>04.00.00-MS-GA</microstream.version>
         <!-- Liberty configuration -->
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
@@ -35,6 +34,30 @@
                 <configuration>
                     <serverName>guideServer</serverName>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>startServer</id>
+                        <goals>
+                            <goal>test-start</goal>
+                        </goals>
+                        <phase>pre-integration-test</phase>
+                        <configuration>
+                            <embedded>false</embedded>
+                            <clean>true</clean>
+                            <serverStartTimeout>60</serverStartTimeout>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stopServer</id>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                        <phase>post-integration-test</phase>
+                        <configuration>
+                            <embedded>false</embedded>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -111,14 +134,28 @@
             <!--                </executions>-->
             <!--            </plugin>-->
         </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <compilerVersion>${java.version}</compilerVersion>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>8.0.0</version>
-            <scope>provided</scope>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile</groupId>
@@ -151,6 +188,21 @@
             <groupId>one.microstream</groupId>
             <artifactId>storage.embedded.configuration</artifactId>
             <version>${microstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>one.microstream</groupId>
+            <artifactId>storage.restservice.sparkjava</artifactId>
+            <version>${microstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>one.microstream</groupId>
+            <artifactId>filesystem.sql</artifactId>
+            <version>${microstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
         </dependency>
     </dependencies>
 
