@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 export class IceCreamServiceWrapper extends IcecreamService {
 
   constructor(protected httpClient: HttpClient, @Optional() configuration: Configuration) {
-    super(httpClient, "http://localhost:9080/qm-ice-maschine", configuration);
+    super(httpClient, "http://localhost:9080/qm-ice-machine", configuration);
   }
 
   storeToIceCreamList(iceCream: IceCream){
