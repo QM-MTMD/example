@@ -1,0 +1,21 @@
+openapi: 3.0.1
+info:
+  title: QM-IceCream-API
+  version: "0.0.1"
+  description: |
+    ice cream api
+
+paths:
+  /icecreams:
+    get:
+      tags:
+        - icecream
+      operationId: iceCreamList
+      summary: the list of all ice cream varieties
+      responses:
+        200:
+          description: the list of all ice cream varieties
+          content:
+            application/json:
+              schema:
+                $ref: './schema/iceCreamResponse.yaml'
