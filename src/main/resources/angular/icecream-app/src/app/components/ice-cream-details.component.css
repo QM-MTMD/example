@@ -1,0 +1,20 @@
+:host {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icecream-details {
+  width: 75%;
+}
+
+mat-card-content {
+  margin-top: 25px;
+}
+
+h2 {
+  margin-top: 15px;
+}

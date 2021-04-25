@@ -1,0 +1,21 @@
+:host {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icecream-list {
+  width: 75%;
+}
+
+.mat-list-item-title {
+  width:50%;
+}
+
+.mat-list-item-description {
+  color: rgba(0,0,0,.54);
+  width: 50%;
+}

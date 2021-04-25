@@ -1,0 +1,99 @@
+<form [formGroup]="iceCreamForm" (submit)="submit()">
+  <mat-card class="icecream-card">
+    <mat-card-header>
+      <mat-card-title>Neue Eissorte hinzufügen</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Was für ein Eis" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Kategorie</mat-label>
+        <mat-select [(value)]="category" name="category" #t placeholder="Bitte wählen"
+                    (selectionChange)="displayFields(t.value)">
+          <mat-option *ngFor="let cat of iceCreamCategory  | keyvalue" [value]="cat.key">
+            {{cat.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="displayAdditionalCream">
+        <mat-form-field>
+          <mat-label>Sahnegehalt</mat-label>
+          <input matInput placeholder="in Prozent" formControlName="percentageCream">
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="displayAdditionalFruit">
+        <mat-form-field>
+          <mat-label>Fruchtgehalt</mat-label>
+          <input matInput placeholder="in Prozent" formControlName="percentageFruit">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Füchte</mat-label>
+          <mat-chip-list #chipList aria-label="Früchte">
+            <mat-chip *ngFor="let fruit of fruits" (removed)="removeFruit(fruit)">
+              {{fruit.name}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Früchte..."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   (matChipInputTokenEnd)="addFruit($event)">
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="displayAdditionalWater">
+        <mat-form-field>
+          <mat-label>Geschmacksstoffe</mat-label>
+          <mat-chip-list #chipList aria-label="Geschmacksstoffe">
+            <mat-chip *ngFor="let flavor of flavors" (removed)="removeFlavor(flavor)">
+              {{flavor.name}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Geschmacksstoffe..."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   (matChipInputTokenEnd)="addFlavor($event)">
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
+
+
+      <mat-form-field>
+        <mat-label>Zutaten</mat-label>
+        <mat-chip-list #chipList aria-label="Zutaten">
+          <mat-chip *ngFor="let ingredient of ingredients" (removed)="removeIngredient(ingredient)">
+            {{ingredient.name}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="Zutaten..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 (matChipInputTokenEnd)="addIngredient($event)">
+        </mat-chip-list>
+      </mat-form-field>
+      <mat-form-field class="ingredient-chip-list">
+        <mat-label>Lebensmittelunverträglichkeiten</mat-label>
+        <textarea matInput placeholder="unbedingt ausfüllen" formControlName="foodIntollerances"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nährwert</mat-label>
+        <input matInput placeholder="in kcal / 100 g" formControlName="nutritionalValue">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>EK Preis</mat-label>
+        <input matInput placeholder="In Euro / 1 Liter" formControlName="priceEK">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>VK Preis</mat-label>
+        <input matInput placeholder="In Euro / 1 Liter" formControlName="priceVK">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary">Hinzufügen</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

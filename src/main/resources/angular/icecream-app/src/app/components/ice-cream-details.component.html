@@ -1,0 +1,45 @@
+<mat-card class="icecream-details">
+  <mat-card-header>
+    <mat-card-subtitle><a routerLink="/" routerLinkActive="active">zurück zur Übersicht</a></mat-card-subtitle>
+    <mat-card-title>{{ iceCream?.name }} - {{ iceCream?.category }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h2>Zutaten</h2>
+    <mat-chip-list aria-label="Zutaten">
+      <mat-chip *ngFor="let ingredient of iceCream?.ingredients">
+        {{ingredient}}
+      </mat-chip>
+    </mat-chip-list>
+    <h2>Lebensmittelunverträglichkeit</h2>
+    <mat-label>{{ iceCream?.foodIntollerances }}</mat-label>
+    <h2>Nährwert</h2>
+    <mat-label>{{ iceCream?.nutritionalValue }}</mat-label>
+    <h2>EK-Preis</h2>
+    <mat-label>{{ iceCream?.priceEK }}</mat-label>
+    <h2>VK-Preis</h2>
+    <mat-label>{{ iceCream?.priceVK }}</mat-label>
+    <div *ngIf="categories.CREAM === iceCream?.category">
+      <h2>Sahnegehalt</h2>
+      <mat-label>{{ iceCream?.percentageCream }}</mat-label>
+    </div>
+    <div *ngIf="categories.FRUIT === iceCream?.category">
+      <h2>Fruchtgehalt</h2>
+      <mat-label>{{ iceCream?.percentageFruit }}</mat-label>
+      <h2>Früchte</h2>
+      <mat-chip-list aria-label="Früchte">
+        <mat-chip *ngFor="let fruit of iceCream?.fruits">
+          {{fruit}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+    <div *ngIf="categories.WATER === iceCream?.category">
+      <h2>Geschmacksstoffe</h2>
+      <mat-chip-list aria-label="Geschmacksstoffe">
+        <mat-chip *ngFor="let flavor of iceCream?.flavors">
+          {{flavor}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+  </mat-card-content>
+</mat-card>
