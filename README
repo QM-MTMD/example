@@ -1,6 +1,9 @@
 # QualityMind - Meet the Minds Day
 
-npm install ng
+# create the initial ice cream angular app
+npm install
+# start angular application
+npm start
 
 mvn package -P install-open-liberty
 mvn package -P configure-open-liberty (noch nicht fertig)
