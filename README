@@ -1,3 +1,7 @@
 # QualityMind - Meet the Minds Day
 
-Eisprojekt
+npm install ng
+
+mvn package -P install-open-liberty
+mvn package -P configure-open-liberty (noch nicht fertig)
+

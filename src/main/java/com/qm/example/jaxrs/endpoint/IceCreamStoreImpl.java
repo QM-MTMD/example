@@ -12,16 +12,10 @@ public class IceCreamStoreImpl implements IceCreamStore {
     private final List<RestIceCream> iceCreams;
     private final EmbeddedStorageManager storage;
 
-    public IceCreamStoreImpl()
-    {
+    public IceCreamStoreImpl() {
         super();
-
         this.iceCreams = new ArrayList<>();
-
-        this.storage   = EmbeddedStorage.start(
-                this.iceCreams,
-                Paths.get("${user.home}/icecream-store")
-        );
+        this.storage = EmbeddedStorage.start(this.iceCreams, Paths.get("icecream-store"));
     }
 
     @Override
@@ -31,15 +25,13 @@ public class IceCreamStoreImpl implements IceCreamStore {
     }
 
     @Override
-    public void add(final RestIceCream iceCream)
-    {
+    public void add(final RestIceCream iceCream) {
         this.iceCreams.add(iceCream);
         this.storeAll();
     }
 
     @Override
-    public List<RestIceCream> findAll()
-    {
+    public List<RestIceCream> findAll() {
         return this.iceCreams;
     }
 }
