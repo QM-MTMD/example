@@ -12,6 +12,10 @@
     <properties>
         <java.version>11</java.version>
         <microstream.version>04.00.00-MS-GA</microstream.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.targetEncoding>UTF-8</project.build.targetEncoding>
+
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <!-- Liberty configuration -->
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
