@@ -19,3 +19,16 @@ paths:
             application/json:
               schema:
                 $ref: './schema/iceCreamResponse.yaml'
+    post:
+      tags:
+        - icecream
+      operationId: storeIceCream
+      summary: store ice cream object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schema/iceCream.yaml'
+      responses:
+        200:
+          description: ice cream data stored

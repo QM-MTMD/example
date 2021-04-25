@@ -1,6 +1,7 @@
 package com.qm.example.jaxrs.endpoint;
 
 import org.openapitools.api.IcecreamsApi;
+import org.openapitools.model.RestIceCream;
 import org.openapitools.model.RestIceCreamResponse;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -19,5 +20,10 @@ public class IceCreamResource implements IcecreamsApi {
         RestIceCreamResponse restIceCreamResponse = new RestIceCreamResponse();
         restIceCreamResponse.setIcecreamList(iceCreamStore.findAll());
         return restIceCreamResponse;
+    }
+
+    @Override
+    public void storeIceCream(RestIceCream restIceCream) {
+        iceCreamStore.add(restIceCream);
     }
 }
