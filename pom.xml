@@ -36,7 +36,10 @@
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>3.3.1</version>
                 <configuration>
-                    <serverName>guideServer</serverName>
+                    <applicationURL>${project.basedir}/target/liberty/wlp/usr/iceCream</applicationURL>
+                    <serverName>iceCream</serverName>
+                    <looseApplication>true</looseApplication>
+                    <deployPackages>all</deployPackages>
                 </configuration>
             </plugin>
             <plugin>
@@ -50,69 +53,34 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>io.openliberty.tools</groupId>-->
-<!--                <artifactId>liberty-maven-plugin</artifactId>-->
-<!--                <version>3.3.4</version>-->
-<!--                <extensions>true</extensions>-->
-<!--                <configuration>-->
-<!--                    <serverName>iceCream</serverName>-->
-<!--&lt;!&ndash;                    <bootstrapProperties>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <httpPort>9080</httpPort>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </bootstrapProperties>&ndash;&gt;-->
-<!--                    <features>-->
-<!--                        <acceptLicense>true</acceptLicense>-->
-<!--                        <feature>mongodb-2.0</feature>-->
-<!--                        <feature>javaee-8.0</feature>-->
-<!--                    </features>-->
-<!--                    <looseApplication>true</looseApplication>-->
-<!--                    <deployPackages>all</deployPackages>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-
-<!--            <plugin>-->
-<!--                <groupId>org.openapitools</groupId>-->
-<!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
-<!--                &lt;!&ndash; RELEASE_VERSION &ndash;&gt;-->
-<!--                <version>5.1.0</version>-->
-<!--                &lt;!&ndash; /RELEASE_VERSION &ndash;&gt;-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <phase>generate-sources</phase>-->
-<!--                        <configuration>-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>-->
-<!--                            <generatorName>java</generatorName>-->
-<!--                            <generateModelTests>false</generateModelTests>-->
-<!--                            <generateApiTests>false</generateApiTests>-->
-<!--                            <generateSupportingFiles>true</generateSupportingFiles>-->
-<!--                            <modelNamePrefix>Rest</modelNamePrefix>-->
-<!--                            <configOptions>-->
-<!--                                <useTagsForClassNames>true</useTagsForClassNames>-->
-<!--                                <sourceFolder>src/gen/java/main</sourceFolder>-->
-<!--                            </configOptions>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-
-            <!--            <plugin>-->
-            <!--                <groupId>org.codehaus.mojo</groupId>-->
-            <!--                <artifactId>build-helper-maven-plugin</artifactId>-->
-            <!--                <version>3.2.0</version>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <configuration>-->
-            <!--                            <sources>-->
-            <!--                                <source>$</source>-->
-            <!--                            </sources>-->
-            <!--                        </configuration>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <!-- RELEASE_VERSION -->
+                <version>5.1.0</version>
+                <!-- /RELEASE_VERSION -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
+                            <generatorName>java</generatorName>
+                            <generateModelTests>false</generateModelTests>
+                            <generateApiTests>false</generateApiTests>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <modelNamePrefix>Rest</modelNamePrefix>
+                            <configOptions>
+                                <dateLibrary>java8</dateLibrary>
+                                <useTagsForClassNames>true</useTagsForClassNames>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
         <pluginManagement>
@@ -155,11 +123,11 @@
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
         </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>2.1.5</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.swagger.core.v3</groupId>-->
+<!--            <artifactId>swagger-annotations</artifactId>-->
+<!--            <version>2.1.5</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>one.microstream</groupId>
             <artifactId>storage.embedded</artifactId>
@@ -184,6 +152,21 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.22</version>
+        </dependency>
+        <dependency>
+            <groupId>io.gsonfire</groupId>
+            <artifactId>gson-fire</artifactId>
+            <version>1.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>3.12.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.6.2</version>
         </dependency>
     </dependencies>
 
