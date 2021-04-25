@@ -73,6 +73,7 @@
                             <generateSupportingFiles>true</generateSupportingFiles>
                             <modelNamePrefix>Rest</modelNamePrefix>
                             <configOptions>
+                                <interfaceOnly>true</interfaceOnly>
                                 <dateLibrary>java8</dateLibrary>
                                 <useTagsForClassNames>true</useTagsForClassNames>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
