@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Path;
 
 @ApplicationScoped
-@Path("")
+@Path("icecreams")
 public class IceCreamResource implements IcecreamsApi {
 
     @Inject
