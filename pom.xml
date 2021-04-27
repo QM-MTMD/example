@@ -36,7 +36,7 @@
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>3.3.4</version>
                 <configuration>
-                    <applicationURL>${project.basedir}/target/liberty/wlp/usr/iceCream</applicationURL>
+                    <applicationURL>${project.basedir}/liberty/wlp/usr/iceCream</applicationURL>
                     <serverName>iceCream</serverName>
                     <looseApplication>true</looseApplication>
                     <deployPackages>all</deployPackages>
