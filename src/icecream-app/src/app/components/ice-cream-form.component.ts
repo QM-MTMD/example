@@ -80,7 +80,8 @@ export class IceCreamFormComponent implements OnInit {
       return;
     }
 
-    this.iceCreamService.storeToIceCreamList(this.mapToIceCream());
+    this.iceCreamService.storeToIceCreamList(this.mapToIceCream())
+      .subscribe(response => console.log(response));
     this.resetData();
   }
 

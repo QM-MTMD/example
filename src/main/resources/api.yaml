@@ -18,7 +18,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schema/iceCreamResponse.yaml'
+                type: array
+                items:
+                  $ref: './schema/iceCream.yaml'
     post:
       tags:
         - icecream

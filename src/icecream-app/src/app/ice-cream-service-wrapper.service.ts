@@ -1,5 +1,5 @@
 import {Injectable, Optional} from '@angular/core';
-import {Configuration, IceCream, IceCreamResponse, IcecreamService} from "./generated";
+import {Configuration, IceCream, IcecreamService} from "./generated";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -13,10 +13,10 @@ export class IceCreamServiceWrapper extends IcecreamService {
   }
 
   storeToIceCreamList(iceCream: IceCream){
-    this.storeIceCream(iceCream)
+    return this.storeIceCream(iceCream);
   }
 
-  getIceCreamList(): Observable<IceCreamResponse> {
+  getIceCreamList(): Observable<Array<IceCream>> {
     return this.iceCreamList();
   }
 }

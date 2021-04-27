@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IceCreamServiceWrapper} from "../ice-cream-service-wrapper.service";
 import {IceCream} from "../generated";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-ice-cream-list',
@@ -9,14 +10,11 @@ import {IceCream} from "../generated";
 })
 export class IceCreamListComponent implements OnInit {
 
-  listIceCream!: Array<IceCream> | undefined;
+  $listIceCream!: Observable<Array<IceCream>>;
 
   constructor(private iceCreamService: IceCreamServiceWrapper) { }
 
   ngOnInit(): void {
-    this.iceCreamService.getIceCreamList().subscribe(data => {
-      this.listIceCream = data.icecreamList;
-    });
+    this.$listIceCream = this.iceCreamService.getIceCreamList();
   }
-
 }

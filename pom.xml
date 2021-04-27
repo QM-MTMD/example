@@ -20,7 +20,7 @@
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
         <liberty.var.app.context.root>${project.artifactId}</liberty.var.app.context.root>
-
+        <anglular.app.generated.folder>${project.basedir}/src/icecream-app/src/app/generated</anglular.app.generated.folder>
     </properties>
 
     <build>
@@ -93,13 +93,24 @@
                             <generateModelTests>false</generateModelTests>
                             <generateApiTests>false</generateApiTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
-                            <output>${project.basedir}/src/icecream-app/src/app/generated</output>
+                            <output>${anglular.app.generated.folder}</output>
                             <configOptions>
                                 <ngVersion>11</ngVersion>
                             </configOptions>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${anglular.app.generated.folder}</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
             </plugin>
         </plugins>
 
