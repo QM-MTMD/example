@@ -10,7 +10,7 @@
                        [queryParams]="{ iceCream:iceCream | json }">
         <div class="mat-list-item-content">
           <span class="mat-list-item-title">{{ iceCream.name }}</span>
-          <span class="mat-list-item-description">{{ iceCream.category }}</span>
+          <span class="mat-list-item-description">{{ selectedCategory(iceCream.category) }}</span>
           <mat-icon aria-hidden="false" aria-label="Arrow forward icon">arrow_forward_ios</mat-icon>
         </div>
       </mat-list-option>

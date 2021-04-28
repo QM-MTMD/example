@@ -5,6 +5,7 @@ import {FormBuilder} from "@angular/forms";
 import {IceCreamServiceWrapper} from "../ice-cream-service-wrapper.service";
 import {IceCream} from "../generated";
 import CategoryEnum = IceCream.CategoryEnum;
+import {IceCreamCategory} from "../models/ice-cream-category.model";
 
 export interface Ingredient {
   name: string;
@@ -25,7 +26,7 @@ export interface Fruit {
 })
 export class IceCreamFormComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  readonly iceCreamCategory = CategoryEnum;
+  readonly iceCreamCategory = IceCreamCategory;
   @Output() buttonClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
   iceCreamForm = this.formBuilder.group({
@@ -96,10 +97,10 @@ export class IceCreamFormComponent implements OnInit {
   private mapToIceCream() {
     let cat: CategoryEnum;
     switch (this.category) {
-      case "Cream":
+      case "CREAM":
         cat = CategoryEnum.Cream;
         break;
-      case "Fruit":
+      case "FRUIT":
         cat = CategoryEnum.Fruit;
         break;
       default:
@@ -109,12 +110,12 @@ export class IceCreamFormComponent implements OnInit {
     let iceCream = {
       name: this.iceCreamForm.controls["name"].value,
       category: cat,
-      foodIntollerances: this.iceCreamForm.controls["foodIntollerances"].value,
-      nutritionalValue: this.iceCreamForm.controls["nutritionalValue"].value,
-      priceEK: this.iceCreamForm.controls["priceEK"].value,
-      priceVK: this.iceCreamForm.controls["priceVK"].value,
-      percentageCream: this.iceCreamForm.controls["percentageCream"].value,
-      percentageFruit: this.iceCreamForm.controls["percentageFruit"].value,
+      foodintollerances: this.iceCreamForm.controls["foodIntollerances"].value,
+      nutritional_value: this.iceCreamForm.controls["nutritionalValue"].value,
+      price_ek: this.iceCreamForm.controls["priceEK"].value,
+      price_vk: this.iceCreamForm.controls["priceVK"].value,
+      cream_percentage: this.iceCreamForm.controls["percentageCream"].value,
+      fruit_percentage: this.iceCreamForm.controls["percentageFruit"].value,
       ingredients: this.ingredients.map(v => v.name),
       flavors: this.flavors.map(v => v.name),
       fruits: this.fruits.map(v => v.name),
@@ -124,9 +125,9 @@ export class IceCreamFormComponent implements OnInit {
   }
 
   displayFields(selectedCategory: string) {
-    this.displayAdditionalCream = selectedCategory === "Cream";
-    this.displayAdditionalFruit = selectedCategory === "Fruit";
-    this.displayAdditionalWater = selectedCategory === "Water";
+    this.displayAdditionalCream = selectedCategory === "CREAM";
+    this.displayAdditionalFruit = selectedCategory === "FRUIT";
+    this.displayAdditionalWater = selectedCategory === "WATER";
   }
 
   addFlavor(event: MatChipInputEvent): void {
