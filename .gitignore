@@ -3,3 +3,7 @@
 /target
 *.iml
 liberty
+/backend/target/
+/package-lock.json
+/backend/src/icecream-app/src/app/generated/.openapi-generator/
+/backend/src/icecream-app/src/app/generated/

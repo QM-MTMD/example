@@ -31,7 +31,7 @@
           <input matInput placeholder="in Prozent" formControlName="percentageFruit">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Füchte</mat-label>
+          <mat-label>Früchte</mat-label>
           <mat-chip-list #chipList aria-label="Früchte">
             <mat-chip *ngFor="let fruit of fruits" (removed)="removeFruit(fruit)">
               {{fruit.name}}

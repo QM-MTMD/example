@@ -30,9 +30,9 @@ export class IceCreamFormComponent implements OnInit {
   @Output() buttonClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
   iceCreamForm!: FormGroup;
-  ingredients: Ingredient[] = [];
-  flavors: Flavor[] = [];
-  fruits: Fruit[] = [];
+  ingredients: Ingredient[] = [{name: 'Pusemuckel'}, {name: 'NochMehrMuckel'}];
+  flavors: Flavor[] = [{name: 'Vanille'}];
+  fruits: Fruit[] = [{name: 'Erdbeere'}];
   displayAdditionalCream = false;
   displayAdditionalFruit = false;
   displayAdditionalWater = false;
@@ -43,14 +43,14 @@ export class IceCreamFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.iceCreamForm = this.formBuilder.group({
-      name: [''],
-      category: [''],
-      foodIntollerances: [''],
-      nutritionalValue: [''],
-      priceEK: [''],
-      priceVK: [''],
-      percentageCream: [''],
-      percentageFruit: [''],
+      name: ['Vanille'],
+      category: ['FRUIT'],
+      foodIntollerances: ['Laktose'],
+      nutritionalValue: ['110'],
+      priceEK: ['0.55'],
+      priceVK: ['1.6'],
+      percentageCream: ['12'],
+      percentageFruit: ['30'],
     });
   }
 

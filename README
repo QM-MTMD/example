@@ -15,7 +15,7 @@
 5. npm start
 
 # install Open Liberty, configure it, deploy application and start the server (noch nicht ausprobiert)
-6. mvn package -P install-open-liberty
-7. mvn package -P configure-open-liberty (noch nicht fertig)
+6. mvn pre-integration-test -P install-open-liberty
+7. mvn pre-integration-test -P configure-open-liberty (noch nicht fertig)
 8. mvn liberty:start
 
