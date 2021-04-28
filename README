@@ -1,18 +1,18 @@
 # QualityMind - Meet the Minds Day
 
 
-## Kompilieren und Starten
+## Prepare and run project
 
-1. Switch into project root directory
-
-# create the initial ice cream angular app
+1. Switch into angular app directory
+cd {project.root}/src/icecream-app
+# initialize angular project
 2. npm install
+# compile and run server (http://localhost:4200)
+3. npm start
+
 # build backend
-3. mvn clean install
-
-
-# start angular application
-4. npm start
+1. Switch into project root directory
+2. mvn clean install
 
 # install Open Liberty, configure it, deploy application and start the server (noch nicht ausprobiert)
 mvn package -P install-open-liberty
