@@ -3,19 +3,19 @@
 
 ## Prepare and run project
 
-1. Switch into angular app directory
-cd {project.root}/src/icecream-app
-# initialize angular project
-2. npm install
-# compile and run server (http://localhost:4200)
-3. npm start
-
 # build backend
 1. Switch into project root directory
 2. mvn clean install
 
+# Switch into angular app directory
+3. cd {project.root}/src/icecream-app
+# initialize angular project
+4. npm install
+# compile and run server (http://localhost:4200)
+5. npm start
+
 # install Open Liberty, configure it, deploy application and start the server (noch nicht ausprobiert)
-mvn package -P install-open-liberty
-mvn package -P configure-open-liberty (noch nicht fertig)
-mvn liberty:start
+6. mvn package -P install-open-liberty
+7. mvn package -P configure-open-liberty (noch nicht fertig)
+8. mvn liberty:start
 
