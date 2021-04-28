@@ -24,6 +24,7 @@ export class IceCreamServiceWrapper extends IcecreamService {
   }
 
   getIceCreamList(): Observable<Array<IceCream>> {
+    this.iceCreamList().subscribe(d => this.$subject.next(d));
     return this.$subject.asObservable();
   }
 }
