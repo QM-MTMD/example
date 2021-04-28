@@ -10,7 +10,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Kategorie</mat-label>
-        <mat-select [(value)]="category" name="category" #t placeholder="Bitte wählen"
+        <mat-select formControlName="category" #t placeholder="Bitte wählen"
                     (selectionChange)="displayFields(t.value)">
           <mat-option *ngFor="let cat of iceCreamCategory  | keyvalue" [value]="cat.key">
             {{cat.value}}

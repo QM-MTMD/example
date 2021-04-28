@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatChipInputEvent} from "@angular/material/chips";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {IceCreamServiceWrapper} from "../ice-cream-service-wrapper.service";
 import {IceCream} from "../generated";
 import CategoryEnum = IceCream.CategoryEnum;
@@ -30,8 +30,6 @@ export class IceCreamFormComponent implements OnInit {
   @Output() buttonClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
   iceCreamForm!: FormGroup;
-
-  category!: string;
   ingredients: Ingredient[] = [];
   flavors: Flavor[] = [];
   fruits: Fruit[] = [];
@@ -46,6 +44,7 @@ export class IceCreamFormComponent implements OnInit {
   ngOnInit(): void {
     this.iceCreamForm = this.formBuilder.group({
       name: [''],
+      category: [''],
       foodIntollerances: [''],
       nutritionalValue: [''],
       priceEK: [''],
@@ -92,12 +91,12 @@ export class IceCreamFormComponent implements OnInit {
     this.flavors = [];
     this.ingredients = [];
     this.fruits = [];
-    this.category = '';
   }
 
   private mapToIceCream() {
     let cat: CategoryEnum;
-    switch (this.category) {
+
+    switch (this.iceCreamForm.controls["category"].value) {
       case "CREAM":
         cat = CategoryEnum.Cream;
         break;
