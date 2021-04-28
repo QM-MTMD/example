@@ -19,15 +19,15 @@ properties:
       type: string
   foodintollerances:
     type: string
-  nutritional-value:
+  nutritionalValue:
     type: string
-  price-ek:
+  priceEK:
     type: number
-  price-vk:
+  priceVK:
     type: number
-  cream-percentage:
+  creamPercentage:
     type: string
-  fruit-percentage:
+  fruitPercentage:
     type: string
   fruits:
     type: array

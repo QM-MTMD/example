@@ -13,18 +13,18 @@
     <h2>Lebensmittelunverträglichkeit</h2>
     <mat-label>{{ iceCream?.foodintollerances }}</mat-label>
     <h2>Nährwert</h2>
-    <mat-label>{{ iceCream?.nutritional_value }}</mat-label>
+    <mat-label>{{ iceCream?.nutritionalValue }}</mat-label>
     <h2>EK-Preis</h2>
-    <mat-label>{{ iceCream?.price_ek }}</mat-label>
+    <mat-label>{{ iceCream?.priceEK }}</mat-label>
     <h2>VK-Preis</h2>
-    <mat-label>{{ iceCream?.price_vk }}</mat-label>
+    <mat-label>{{ iceCream?.priceVK }}</mat-label>
     <div *ngIf="'CREAM' === iceCream?.category">
       <h2>Sahnegehalt</h2>
-      <mat-label>{{ iceCream?.cream_percentage }}</mat-label>
+      <mat-label>{{ iceCream?.creamPercentage }}</mat-label>
     </div>
     <div *ngIf="iceCream?.category === 'FRUIT'">
       <h2>Fruchtgehalt</h2>
-      <mat-label>{{ iceCream?.fruit_percentage }}</mat-label>
+      <mat-label>{{ iceCream?.fruitPercentage }}</mat-label>
       <h2>Früchte</h2>
       <mat-chip-list aria-label="Früchte">
         <mat-chip *ngFor="let fruit of iceCream?.fruits">

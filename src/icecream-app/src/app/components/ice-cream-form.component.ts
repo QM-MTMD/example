@@ -93,7 +93,7 @@ export class IceCreamFormComponent implements OnInit {
     this.fruits = [];
   }
 
-  private mapToIceCream() {
+  private mapToIceCream(): IceCream {
     let cat: CategoryEnum;
 
     switch (this.iceCreamForm.controls["category"].value) {
@@ -111,11 +111,11 @@ export class IceCreamFormComponent implements OnInit {
       name: this.iceCreamForm.controls["name"].value,
       category: cat,
       foodintollerances: this.iceCreamForm.controls["foodIntollerances"].value,
-      nutritional_value: this.iceCreamForm.controls["nutritionalValue"].value,
-      price_ek: this.iceCreamForm.controls["priceEK"].value,
-      price_vk: this.iceCreamForm.controls["priceVK"].value,
-      cream_percentage: this.iceCreamForm.controls["percentageCream"].value,
-      fruit_percentage: this.iceCreamForm.controls["percentageFruit"].value,
+      nutritionalValue: this.iceCreamForm.controls["nutritionalValue"].value,
+      priceEK: this.iceCreamForm.controls["priceEK"].value,
+      priceVK: this.iceCreamForm.controls["priceVK"].value,
+      creamPercentage: this.iceCreamForm.controls["percentageCream"].value,
+      fruitPercentage: this.iceCreamForm.controls["percentageFruit"].value,
       ingredients: this.ingredients.map(v => v.name),
       flavors: this.flavors.map(v => v.name),
       fruits: this.fruits.map(v => v.name),
