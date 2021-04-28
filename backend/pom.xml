@@ -14,10 +14,9 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
         <liberty.install.dir>${project.basedir}/../liberty</liberty.install.dir>
         <liberty.home.dir>${liberty.install.dir}/wlp</liberty.home.dir>
+        <anglular.app.generated.folder>${project.basedir}/../frontend/src/icecream-app/src/app/generated</anglular.app.generated.folder>
     </properties>
 
     <build>
