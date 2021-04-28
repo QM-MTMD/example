@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatChipInputEvent} from "@angular/material/chips";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {IceCreamServiceWrapper} from "../ice-cream-service-wrapper.service";
 import {IceCream} from "../generated";
 import CategoryEnum = IceCream.CategoryEnum;
@@ -29,20 +29,12 @@ export class IceCreamFormComponent implements OnInit {
   readonly iceCreamCategory = IceCreamCategory;
   @Output() buttonClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
-  iceCreamForm = this.formBuilder.group({
-    name: [''],
-    foodIntollerances: [''],
-    nutritionalValue: [''],
-    priceEK: [''],
-    priceVK: [''],
-    percentageCream: [''],
-    percentageFruit: [''],
-  });
+  iceCreamForm!: FormGroup;
 
   category!: string;
   ingredients: Ingredient[] = [];
   flavors: Flavor[] = [];
-  fruits: Flavor[] = [];
+  fruits: Fruit[] = [];
   displayAdditionalCream = false;
   displayAdditionalFruit = false;
   displayAdditionalWater = false;
@@ -52,6 +44,15 @@ export class IceCreamFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.iceCreamForm = this.formBuilder.group({
+      name: [''],
+      foodIntollerances: [''],
+      nutritionalValue: [''],
+      priceEK: [''],
+      priceVK: [''],
+      percentageCream: [''],
+      percentageFruit: [''],
+    });
   }
 
   addIngredient(event: MatChipInputEvent): void {
