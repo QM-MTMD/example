@@ -37,7 +37,6 @@
                     <serverName>${liberty.server.name}</serverName>
                     <looseApplication>true</looseApplication>
                     <deployPackages>all</deployPackages>
-                    <serverRoot>${project.build.finalName}</serverRoot>
                 </configuration>
             </plugin>
             <plugin>
