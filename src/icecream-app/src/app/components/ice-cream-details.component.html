@@ -15,9 +15,9 @@
     <h2>Nährwert</h2>
     <mat-label>{{ iceCream?.nutritionalValue }}</mat-label>
     <h2>EK-Preis</h2>
-    <mat-label>{{ iceCream?.priceEK }}</mat-label>
+    <mat-label>{{ iceCream?.priceEK }} &euro;</mat-label>
     <h2>VK-Preis</h2>
-    <mat-label>{{ iceCream?.priceVK }}</mat-label>
+    <mat-label>{{ iceCream?.priceVK }} &euro;</mat-label>
     <div *ngIf="'CREAM' === iceCream?.category">
       <h2>Sahnegehalt</h2>
       <mat-label>{{ iceCream?.creamPercentage }}</mat-label>
