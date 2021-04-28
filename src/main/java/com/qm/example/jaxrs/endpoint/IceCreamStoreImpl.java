@@ -20,7 +20,7 @@ public class IceCreamStoreImpl implements IceCreamStore {
 
         this.storage   = EmbeddedStorage.start(
                 this.iceCreams,
-                Paths.get("${user.home}/icecream-store")
+                Paths.get("icecream-store")
         );
     }
 
