@@ -10,29 +10,33 @@ properties:
     type: string
     enum: ["CREAM", "FRUIT", "WATER"]
     description: |
-      SAHNE = Sahne-Eis
-      FRUCHT = Frucht-Eis
-      WASSER = Wasser-Eis
+      CREAM = Sahne-Eis
+      FRUIT = Frucht-Eis
+      WATER = Wasser-Eis
   ingredients:
     type: array
     items:
-      $ref: './ingredient.yaml'
+      type: string
   foodintollerances:
     type: string
   nutritional-value:
-    type: integer
+    type: string
   price-ek:
     type: number
   price-vk:
     type: number
   cream-percentage:
-    type: number
+    type: string
   fruit-percentage:
-    type: number
+    type: string
   fruits:
     type: array
     items:
-      $ref: './fruit.yaml'
+      type: string
+  flavors:
+    type: array
+    items:
+      type: string
 required:
   - name
   - category
