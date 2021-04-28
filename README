@@ -15,8 +15,14 @@
 5. npm start
 
 
-# install Open Liberty, configure it, deploy application and start the server (noch nicht ausprobiert)
+# install Open Liberty, configure it and deploy application
 6. Switch into project root directory
 7. mvn -f ./server/pom.xml pre-integration-test -P install-open-liberty,configure-open-liberty
 7. mvn -f ./backend/pom.xml pre-integration-test -P deploy-backend
+
+# Start Backend (http://localhost:9080/qm-ice-machine)
+# First Start takes some time; after that is is MUCH better
 8. mvn -f ./backend/pom.xml liberty:start
+
+# Stop Backend
+9. mvn -f ./backend/pom.xml liberty:stop
