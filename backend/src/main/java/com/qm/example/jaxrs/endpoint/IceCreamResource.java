@@ -17,6 +17,11 @@ public class IceCreamResource implements IcecreamsApi {
     IceCreamStore iceCreamStore;
 
     @Override
+    public void deleteIceCream(RestIceCream restIceCream) {
+        iceCreamStore.delete(restIceCream);
+    }
+
+    @Override
     public List<RestIceCream> iceCreamList() {
         return iceCreamStore.findAll();
     }

@@ -34,3 +34,16 @@ paths:
       responses:
         200:
           description: ice cream data stored
+    delete:
+      tags:
+        - icecream
+      operationId: deleteIceCream
+      summary: delete ice cream object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schema/iceCream.yaml'
+      responses:
+        200:
+          description: ice cream data deleted

@@ -11,4 +11,6 @@ public interface IceCreamStore {
     List<RestIceCream> findAll();
 
     void storeAll();
+
+    void delete(RestIceCream toBeDeleted);
 }
